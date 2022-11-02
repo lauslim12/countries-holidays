@@ -50,6 +50,11 @@ yarn start
 yarn test-ci
 ```
 
+## Credits
+
+- [date.nager.at](https://date.nager.at/) for the API.
+- [icons8.com](https://icons8.com/) for the favorite icon.
+
 ## License
 
 MIT License.
