@@ -1,0 +1,75 @@
+name: Workflow
+
+on:
+  pull_request:
+    branches: [main]
+
+env:
+  NODE_VERSION: 16.17.0
+
+jobs:
+  code-check:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn --frozen-lockfile --prefer-offline
+
+      - name: Check for circular dependencies
+        run: yarn circular-check
+
+      - name: Format with Prettier
+        run: yarn format-check
+
+      - name: Lint with ESLint
+        run: yarn lint
+
+      - name: Ensure it compiles with TypeScript
+        run: yarn type-check
+
+  test:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn --frozen-lockfile --prefer-offline
+
+      - name: Run unit tests in CI environment
+        run: yarn test-ci
+
+  build:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn --frozen-lockfile --prefer-offline
+
+      - name: Build the application
+        run: yarn build
