@@ -3,7 +3,7 @@ import Grid from '@mui/material/Unstable_Grid2';
 import { memo, Suspense, useDeferredValue, useMemo, useState } from 'react';
 
 import Skeleton from '../../../common/Skeleton';
-import { useCountries } from '../core/useCountries';
+import { useCountries } from '../core/use-countries';
 import CountriesCard from './Card';
 import CountriesDetail from './Detail';
 
