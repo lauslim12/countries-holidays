@@ -2,7 +2,7 @@
 
 Find out holidays and special days from over 90 countries! Developed to showcase React 18 features: concurrency, transitions, deferred values, caching, suspense, suspense data fetching, prefetch, and error boundary. Tested with React Testing Library.
 
-The application is intentionally kept simple and straightforward to focus on the core concepts. The design is made with MaterialUI to quickly bootstrap a new beautiful page.
+The application is intentionally kept simple and straightforward to focus on the core concepts. The design is made with MaterialUI to quickly bootstrap a new beautiful page. The project structure is inspired from React Redux's project structure, which is to separate everything by domain and place our required components inside the relevant folder. Files are in `kebab-case`, unless for React components, it is in `PascalCase`.
 
 ## Features
 

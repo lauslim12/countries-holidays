@@ -15,8 +15,8 @@ import {
 import { memo } from 'react';
 
 import getFlagEmoji from '../../../utils/get-flag-emoji';
-import { useCountry } from '../core/useCountry';
-import { useHolidays } from '../core/useHolidays';
+import { useCountry } from '../core/use-country';
+import { useHolidays } from '../core/use-holidays';
 
 type Props = {
   countryCode: string;
