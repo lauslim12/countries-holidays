@@ -1,0 +1,27 @@
+{
+	"name": "Countries Holidays Project GitHub Codespaces",
+	"image": "mcr.microsoft.com/devcontainers/typescript-node:16-bullseye",
+	"customizations": {
+		"vscode": {
+			"settings": {
+				"editor.bracketPairColorization.enabled": true,
+				"editor.minimap.enabled": false,
+				"editor.tabSize": 2,
+				"editor.formatOnSave": true,
+				"editor.defaultFormatter": "esbenp.prettier-vscode",
+				"editor.codeActionsOnSave": {
+				  "source.fixAll": true
+				},
+				"files.autoSave": "off"
+			},
+			"extensions": [
+				"dbaeumer.vscode-eslint",
+				"esbenp.prettier-vscode",
+				"mutantdino.resourcemonitor"
+			]
+		}
+	},
+	"forwardPorts": [3000],
+	"postCreateCommand": "yarn install --frozen-lockfile",
+	"remoteUser": "node"
+}
