@@ -1,6 +1,6 @@
-import { fetcher, prefetch, useSWR } from '../../../utils/use-swr';
+import { prefetch, useSWR } from '../../../utils/use-swr';
 import { BASE_URL } from './const';
-import { countryHolidaysSchema } from './schema';
+import { CountryHoliday, countryHolidaysSchema } from './schema';
 
 export function useHolidays(countryCode: string, year: number) {
   const { data } = useSWR(`${BASE_URL}/PublicHolidays/${year}/${countryCode}`);
@@ -8,10 +8,7 @@ export function useHolidays(countryCode: string, year: number) {
 }
 
 export function prefetchHolidays(countryCode: string, year: number) {
-  const url = `${BASE_URL}/PublicHolidays/${year}/${countryCode}`;
-
-  return prefetch(
-    url,
-    fetcher(url).then((res) => res)
+  return prefetch<CountryHoliday[]>(
+    `${BASE_URL}/PublicHolidays/${year}/${countryCode}`
   );
 }
