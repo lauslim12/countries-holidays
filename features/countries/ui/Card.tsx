@@ -9,6 +9,8 @@ import { type Dispatch, type SetStateAction, memo } from 'react';
 
 import getFlagEmoji from '../../../utils/get-flag-emoji';
 import type { Country } from '../core/schema';
+import { prefetchCountry } from '../core/use-country';
+import { prefetchHolidays } from '../core/use-holidays';
 
 type Props = {
   country: Country;
@@ -27,7 +29,6 @@ function Card({ country, setCountryCode, setHasOpen }: Props) {
         justifyContent: 'space-between',
       }}
     >
-      {/* <CardActionArea> */}
       <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
           Country
@@ -48,6 +49,12 @@ function Card({ country, setCountryCode, setHasOpen }: Props) {
         <Button
           size="small"
           aria-label={`${country.countryCode}-details`}
+          onMouseEnter={async () =>
+            Promise.all([
+              prefetchCountry(country.countryCode),
+              prefetchHolidays(country.countryCode, new Date().getFullYear()),
+            ])
+          }
           onClick={() => {
             setCountryCode(country.countryCode);
             setHasOpen(true);
@@ -56,7 +63,6 @@ function Card({ country, setCountryCode, setHasOpen }: Props) {
           Detail
         </Button>
       </CardActions>
-      {/* </CardActionArea> */}
     </MuiCard>
   );
 }

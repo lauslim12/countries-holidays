@@ -36,6 +36,8 @@ export const countryInfoSchema = z.object({
   ),
 });
 
+export type CountryInfo = z.infer<typeof countryInfoSchema>;
+
 /**
  * Country Holiday
  */
@@ -60,6 +62,8 @@ export const holidaySchema = z.object({
     ])
   ),
 });
+
+export type CountryHoliday = z.infer<typeof holidaySchema>;
 
 /**
  * Country Holidays
