@@ -8,7 +8,6 @@ import CountriesCard from './Card';
 import CountriesDetail from './Detail';
 
 function List({ search }: { search: string }) {
-  const drawerWidth = 1350;
   const theme = useTheme();
   const largeScreen = useMediaQuery(theme.breakpoints.up('lg'));
 
@@ -32,14 +31,10 @@ function List({ search }: { search: string }) {
         anchor="right"
         open={hasOpen}
         onClose={() => setHasOpen(false)}
-        ModalProps={{ keepMounted: true }}
+        ModalProps={{ keepMounted: largeScreen ? false : true }}
         PaperProps={
           largeScreen
-            ? {
-                sx: {
-                  width: drawerWidth,
-                },
-              }
+            ? {}
             : {
                 sx: {
                   width: '100%',
