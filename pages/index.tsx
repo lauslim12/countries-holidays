@@ -58,6 +58,18 @@ function Home() {
           </Typography>
         </Typography>
 
+        <Typography variant="h5" component="h3">
+          For the year{' '}
+          <Typography
+            variant="h5"
+            component="span"
+            sx={{ color: 'rgba(255, 73, 73, 1)' }}
+            fontWeight="bold"
+          >
+            {new Date().getFullYear()}
+          </Typography>
+        </Typography>
+
         <TextField
           fullWidth
           label="Search Country"

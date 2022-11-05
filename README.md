@@ -34,7 +34,7 @@ yarn --frozen-lockfile
 - Run application with the development mode.
 
 ```bash
-yarn start
+yarn dev
 ```
 
 - If you need the production build, you can build by using a single command. Don't forget to run it to unleash the power of React 18!

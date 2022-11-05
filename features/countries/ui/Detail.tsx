@@ -35,8 +35,8 @@ function Detail({ countryCode, closeModal }: Props) {
 
       <Typography paragraph>
         {country.commonName} ({country.officialName}), is a country located in
-        the region of {country.region}. It&apos;s country code is written with
-        the characters {country.countryCode}.
+        the region of {country.region}. Its country code is written with the
+        characters {country.countryCode}.
       </Typography>
 
       <Divider />
