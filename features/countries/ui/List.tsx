@@ -1,4 +1,4 @@
-import { Drawer, Stack, useMediaQuery, useTheme } from '@mui/material';
+import { Drawer, Stack, useTheme } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 import { memo, Suspense, useDeferredValue, useMemo, useState } from 'react';
 
@@ -9,7 +9,6 @@ import CountriesDetail from './Detail';
 
 function List({ search }: { search: string }) {
   const theme = useTheme();
-  const largeScreen = useMediaQuery(theme.breakpoints.up('lg'));
 
   const [countryCode, setCountryCode] = useState('ID');
   const [hasOpen, setHasOpen] = useState(false);
@@ -31,16 +30,15 @@ function List({ search }: { search: string }) {
         anchor="right"
         open={hasOpen}
         onClose={() => setHasOpen(false)}
-        ModalProps={{ keepMounted: largeScreen ? false : true }}
-        PaperProps={
-          largeScreen
-            ? {}
-            : {
-                sx: {
-                  width: '100%',
-                },
-              }
-        }
+        ModalProps={{ keepMounted: true }}
+        PaperProps={{
+          sx: {
+            width: {
+              lg: '100%',
+              xl: 'auto',
+            },
+          },
+        }}
       >
         <Stack component="aside" spacing={2} sx={{ padding: 2 }}>
           <Suspense fallback={<Skeleton />}>
