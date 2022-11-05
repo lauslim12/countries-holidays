@@ -7,7 +7,7 @@ export function useHolidays(countryCode: string, year: number) {
   return countryHolidaysSchema.parse(data);
 }
 
-export function prefetchHolidays(countryCode: string, year: number) {
+export async function prefetchHolidays(countryCode: string, year: number) {
   return prefetch<CountryHoliday[]>(
     `${BASE_URL}/PublicHolidays/${year}/${countryCode}`
   );

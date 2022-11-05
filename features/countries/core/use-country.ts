@@ -7,6 +7,6 @@ export function useCountry(countryCode: string) {
   return countryInfoSchema.parse(data);
 }
 
-export function prefetchCountry(countryCode: string) {
+export async function prefetchCountry(countryCode: string) {
   return prefetch<CountryInfo>(`${BASE_URL}/CountryInfo/${countryCode}`);
 }

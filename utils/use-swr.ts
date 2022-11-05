@@ -13,7 +13,7 @@ export function useSWR<T>(url: Key) {
   return swr<T>(url, fetcher, { suspense: true });
 }
 
-export function prefetch<T>(url: string) {
+export async function prefetch<T>(url: string) {
   return mutate(
     url,
     fetcher<T>(url).then((res) => res)
