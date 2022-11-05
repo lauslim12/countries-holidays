@@ -157,20 +157,20 @@ const handlers = [
     return res(ctx.json(data.allCountries));
   }),
 
-  rest.get(`${apiBaseUrl}/CountryInfo/ID`, (req, res, ctx) => {
+  rest.get(`${apiBaseUrl}/CountryInfo/:code`, (req, res, ctx) => {
+    if (req.params.code === 'JP') {
+      return res(ctx.json(data.japanDetails));
+    }
+
     return res(ctx.json(data.indonesiaDetails));
   }),
 
-  rest.get(`${apiBaseUrl}/CountryInfo/JP`, (req, res, ctx) => {
-    return res(ctx.json(data.japanDetails));
-  }),
+  rest.get(`${apiBaseUrl}/PublicHolidays/:year/:code`, (req, res, ctx) => {
+    if (req.params.code === 'JP') {
+      return res(ctx.json(data.japanHolidays));
+    }
 
-  rest.get(`${apiBaseUrl}/PublicHolidays/2022/ID`, (req, res, ctx) => {
     return res(ctx.json(data.indonesiaHolidays));
-  }),
-
-  rest.get(`${apiBaseUrl}/PublicHolidays/2022/JP`, (req, res, ctx) => {
-    return res(ctx.json(data.japanHolidays));
   }),
 ];
 
@@ -221,9 +221,7 @@ test('renders the side drawer and ensures it can be interactive', async () => {
 
   // Wait, and ensure that the side drawer has opened, revealing Indonesia's information.
   expect(
-    await screen.findByText(
-      "Indonesia (Republic of Indonesia), is a country located in the region of Asia. It's country code is written with the characters ID."
-    )
+    await screen.findByText(/country code is written with the characters ID/i)
   ).toBeInTheDocument();
 
   // Click on the button to close the details drawer.
@@ -236,9 +234,7 @@ test('renders the side drawer and ensures it can be interactive', async () => {
 
   // Ensure that the side drawer has opened again, this time revealing Japan's information.
   expect(
-    await screen.findByText(
-      "Japan (Japan), is a country located in the region of Asia. It's country code is written with the characters JP."
-    )
+    await screen.findByText(/country code is written with the characters JP/i)
   ).toBeInTheDocument();
 
   // Press the `ESC` key to close the drawer.
@@ -246,16 +242,12 @@ test('renders the side drawer and ensures it can be interactive', async () => {
 
   // 'JP' should still be mounted, albeit hidden.
   expect(
-    screen.queryByText(
-      "Japan (Japan), is a country located in the region of Asia. It's country code is written with the characters JP."
-    )
+    screen.queryByText(/country code is written with the characters JP/i)
   ).toBeInTheDocument();
 
   // 'ID' shoud not be mounted.
   expect(
-    screen.queryByText(
-      "Indonesia (Republic of Indonesia), is a country located in the region of Asia. It's country code is written with the characters ID."
-    )
+    screen.queryByText(/country code is written with the characters ID/i)
   ).not.toBeInTheDocument();
 });
 
