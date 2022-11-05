@@ -19,6 +19,13 @@ type Props = {
 };
 
 function Card({ country, setCountryCode, setHasOpen }: Props) {
+  const prefetchDrawerData = async () => {
+    await Promise.all([
+      prefetchCountry(country.countryCode),
+      prefetchHolidays(country.countryCode, new Date().getFullYear()),
+    ]);
+  };
+
   return (
     <MuiCard
       variant="outlined"
@@ -49,12 +56,8 @@ function Card({ country, setCountryCode, setHasOpen }: Props) {
         <Button
           size="small"
           aria-label={`${country.countryCode}-details`}
-          onMouseEnter={async () =>
-            Promise.all([
-              prefetchCountry(country.countryCode),
-              prefetchHolidays(country.countryCode, new Date().getFullYear()),
-            ])
-          }
+          onMouseEnter={prefetchDrawerData}
+          onFocus={prefetchDrawerData}
           onClick={() => {
             setCountryCode(country.countryCode);
             setHasOpen(true);
