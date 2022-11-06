@@ -34,7 +34,10 @@ function List({ search }: { search: string }) {
         PaperProps={{
           sx: {
             width: {
-              lg: '100%',
+              xs: '100%',
+              sm: '100%',
+              md: 'auto',
+              lg: 'auto',
               xl: 'auto',
             },
           },
