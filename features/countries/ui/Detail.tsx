@@ -14,9 +14,8 @@ import {
 } from '@mui/material';
 import { memo } from 'react';
 
-import getFlagEmoji from '../../../utils/get-flag-emoji';
-import { useCountry } from '../core/use-country';
-import { useHolidays } from '../core/use-holidays';
+import { getFlagEmoji } from '../../../utils/get-flag-emoji';
+import { useCountry, useHolidays } from '../core/hooks';
 
 type Props = {
   countryCode: string;

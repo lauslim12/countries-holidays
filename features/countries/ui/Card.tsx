@@ -7,10 +7,9 @@ import {
 } from '@mui/material';
 import { type Dispatch, type SetStateAction, memo } from 'react';
 
-import getFlagEmoji from '../../../utils/get-flag-emoji';
+import { getFlagEmoji } from '../../../utils/get-flag-emoji';
+import { prefetchCountry, prefetchHolidays } from '../core/hooks';
 import type { Country } from '../core/schema';
-import { prefetchCountry } from '../core/use-country';
-import { prefetchHolidays } from '../core/use-holidays';
 
 type Props = {
   country: Country;
