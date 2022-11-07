@@ -1,4 +1,4 @@
-function getFlagEmoji(countryCode: string) {
+export function getFlagEmoji(countryCode: string) {
   const codePoints = countryCode
     .toUpperCase()
     .split('')
@@ -6,5 +6,3 @@ function getFlagEmoji(countryCode: string) {
 
   return String.fromCodePoint(...codePoints);
 }
-
-export default getFlagEmoji;
