@@ -6,8 +6,18 @@ The application is intentionally kept simple and straightforward to focus on the
 
 ## Features
 
+For the user-facing side, these are the only features:
+
 - You can see a list of available countries.
 - You may click on the `Detail` text button to open a drawer describing the country's holidays and information.
+
+In the technical side, it is quite more complicated than it seems.
+
+- Data fetching is done by using `stale-while-revalidate` for prefetch, real-time, polling, revalidation and caching.
+- Error boundaries are implemented to prevent unknown errors and to fallback gracefully.
+- Transitions and deferred values are used in the search bar to prevent lag when searching for a certain country.
+- Tests are done by React Testing Library to ensure reliability, integrity, and accuracy.
+- Concurrent React (React 18) is the normal mode of the application; we are always batching requests and performing optimizations whenever possible.
 
 ## Requirements
 
