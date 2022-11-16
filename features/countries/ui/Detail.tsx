@@ -47,7 +47,7 @@ function Detail({ countryCode, closeModal }: Props) {
       {country.borders.length ? (
         <>
           <Typography paragraph>
-            {country.officialName} has neighboring countries, namely:
+            {country.officialName} has several land borders, namely:
           </Typography>
           <List disablePadding>
             {country.borders.map((border) => (
